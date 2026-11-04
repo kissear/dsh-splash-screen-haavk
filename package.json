@@ -1,0 +1,55 @@
+{
+  "name": "dsh-splash-screen-haavk",
+  "version": "1.6.0",
+  "description": "哈夫克（HAAVK）风格 DSH 启动动画：开屏转场视频 → 过曝洗白 → 冷蓝底板 → 五步访问授权流程 → 终幕揭幕。预录语音播报（不再使用 TTS）+ 循环背景音乐，文案、配色、素材均可在 DSH 设置页调整。由 dsh-startup-secret 1.5.2 改写。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek-harness-desktop",
+    "startup",
+    "splash",
+    "boot-animation",
+    "haavk"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "preview/index.html",
+    "open-preview.sh",
+    "打开预览.cmd",
+    "安装.cmd",
+    "install.sh",
+    "cordis.patch.yml",
+    "README.md",
+    "INSTALL.md",
+    "DESKTOP.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ],
+      "platform": "web"
+    }
+  },
+  "author": "二次创作作者",
+  "scripts": {
+    "test": "node test/smoke-host.mjs && node test/smoke-splash.mjs && node test/smoke-client.mjs && node test/smoke-desktop-boot.mjs && node test/new-options.mjs"
+  }
+}
