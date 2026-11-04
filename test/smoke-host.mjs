@@ -172,7 +172,7 @@ r = await call('exact /dsh-startup/config', 'POST', JSON.stringify({ patch: { sp
 cfg = JSON.parse(r.body)
 check('speed 低于下限被夹到 0.35', cfg.config.speed === 0.35, String(cfg.config.speed))
 check('非法 theme 回落到 dark', cfg.config.theme === 'dark', cfg.config.theme)
-check('非法颜色回落到默认红', cfg.config.accent === '#c70000', cfg.config.accent)
+check('非法颜色回落到默认冷蓝', cfg.config.accent === '#4d8dff', cfg.config.accent)
 
 /* 播放时机：原 always 选项已删除，旧配置里的 always 自动迁移到 session */
 r = await call('exact /dsh-startup/config', 'POST', JSON.stringify({ patch: { mode: 'always' } }))
