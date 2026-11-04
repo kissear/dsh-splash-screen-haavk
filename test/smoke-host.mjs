@@ -151,7 +151,7 @@ console.log('\n[4] 配置读写落盘')
 r = await call('exact /dsh-startup/config')
 let cfg = JSON.parse(r.body)
 check('GET config ok', cfg.ok === true)
-check('默认身份名称 = Chunhua', cfg.config.identity === 'Chunhua', cfg.config.identity)
+check('默认身份名称 = OPERATOR', cfg.config.identity === 'OPERATOR', cfg.config.identity)
 check('默认身份编号 = A000001', cfg.config.identityId === 'A000001', cfg.config.identityId)
 check('返回了配置文件路径', typeof cfg.file === 'string' && cfg.file.startsWith(SMOKE_HOME), cfg.file)
 check('返回了插件版本号（设置面板顶部要显示它）', typeof cfg.version === 'string' && /^\d+\.\d+\.\d+/.test(cfg.version), cfg.version)
@@ -181,7 +181,7 @@ r = await call('exact /dsh-startup/config', 'POST', JSON.stringify({ patch: { mo
 check('mode=daily 原样保留', JSON.parse(r.body).config.mode === 'daily', JSON.parse(r.body).config.mode)
 
 r = await call('exact /dsh-startup/config', 'POST', JSON.stringify({ action: 'reset' }))
-check('reset 恢复默认', JSON.parse(r.body).config.identity === 'Chunhua')
+check('reset 恢复默认', JSON.parse(r.body).config.identity === 'OPERATOR')
 
 r = await call('exact /dsh-startup/config', 'POST', '{ not json')
 check('非法 JSON 返回 400', r.statusCode === 400, String(r.statusCode))
