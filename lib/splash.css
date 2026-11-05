@@ -375,6 +375,12 @@ html[data-windows-titlebar].dsu-lock body {
   pointer-events: none;
   transition: opacity 340ms ease;
 }
+/* 第 5 幕（准星）专用：准星圆心在 45%，中文默认落在 46.4%（低 19px），
+   这里单独把中央块再抬 24px，让中文压在圆心略上一点。 */
+.dsu-center.dsu-ret {
+  top: calc(47% - 24px);
+}
+
 
 /* 终幕时整块中央区（状态行 / 分隔线 / 鲸鱼 / 虚线）必须整体退场，
    否则会和 WELCOME 版式叠在一起 */
